@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Выбор опций (Окно 1)</h1>
+    <label>
+        <input type="checkbox" id="checkbox1">
+        Включить опцию 1
+    </label>
+    <label>
+        <input type="radio" name="radioGroup" value="OptionA" id="radioA">
+        Выбрать вариант A
+    </label>
+    <label>
+        <input type="radio" name="radioGroup" value="OptionB" id="radioB">
+        Выбрать вариант B
+    </label>
+    <button id="nextButton">Далее</button>
+
+    <script>
+        document.getElementById('nextButton').addEventListener('click', () => {
+            const checkbox1 = document.getElementById('checkbox1').checked;
+            const selectedRadio = document.querySelector('input[name="radioGroup"]:checked')?.value;
+
+            if (!selectedRadio) {
+                alert('Пожалуйста, выберите радио-кнопку.');
+                return;
+            }
+
+            localStorage.setItem('window1Data', JSON.stringify({ checkbox1, selectedRadio }));
+            window.location.href = 'window2.html';
+        });
+    </script>
+</body>
+</html>

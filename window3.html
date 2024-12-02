@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fffaf0;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Результаты (Окно 3)</h1>
+    <p id="finalData"></p>
+
+    <script>
+        const window1Data = JSON.parse(localStorage.getItem('window1Data'));
+        const window2Data = JSON.parse(localStorage.getItem('window2Data'));
+
+        const finalData = document.getElementById('finalData');
+        finalData.innerHTML = `
+            <strong>Из окна 1:</strong> 
+            Опция включена - ${window1Data.checkbox1}, Вариант - ${window1Data.selectedRadio}.<br>
+            <strong>Из окна 2:</strong> 
+            Выпадающий список - ${window2Data.dropdownValue}.
+        `;
+    </script>
+</body>
+</html>
